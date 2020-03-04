@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  
   <title>Employee Book List</title>
 </head>
 <body>
   <div class="container">
     <h1 style="margin-top: 5%">Employee Book List</h1>
     <form id="book-form" style="margin-top: 2%">
+
       <div class="six columns">
         <label for="name">Full Name</label>
         <input type="text" id="name" class="u-full-width">
@@ -29,7 +33,26 @@
         <label for="location">Location</label>
         <input type="text" id="location" class="u-full-width">
       </div>
+
+      <div>
+        <input type="submit" value="submit" class="three columns" style="margin: 1% 0 5% 0">
+      </div>
     </form>
+
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Job Title</th>
+          <th>Employment Status</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
+
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
