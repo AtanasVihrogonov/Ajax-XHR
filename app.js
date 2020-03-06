@@ -1,5 +1,5 @@
-// Book constructor
-function Book (name, title, status, location ) {
+// Info constructor
+function Info (name, title, status, location ) {
   this.name = name;
   this.title = title;
   this.status = status;
@@ -9,17 +9,17 @@ function Book (name, title, status, location ) {
 // UI constructor
 function UI(){}
 
-// Add book to list
-UI.prototype.addBookToList = function(book) {
-  const list = document.getElementById('book-list');
+// Add info to list
+UI.prototype.addInfoToList = function(info) {
+  const list = document.getElementById('info-list');
   // Create tr element
   const row = document.createElement('tr');
   // Insert cols
   row.innerHTML = `
-    <td>${book.name}</td>
-    <td>${book.title}</td>
-    <td>${book.status}</td>
-    <td>${book.location}</td>
+    <td>${info.name}</td>
+    <td>${info.title}</td>
+    <td>${info.status}</td>
+    <td>${info.location}</td>
     <td><a href="#" class="delete">X</a></td>
   `;
 
@@ -38,7 +38,7 @@ UI.prototype.showAlert = function(msg, className) {
   // Get parent
   const container = document.querySelector('.container');
   // Get form
-  const form = document.querySelector('#book-form');
+  const form = document.querySelector('#info-form');
   // insert alert
   container.insertBefore(div, form)
 
@@ -48,8 +48,8 @@ UI.prototype.showAlert = function(msg, className) {
   }, 2000);
 }
 
-// Delete Book
-UI.prototype.deleteBook = function(target) {
+// Delete Info
+UI.prototype.deleteInfo = function(target) {
   if(target.className === 'delete') {
     target.parentElement.parentElement.remove();
   }
@@ -64,7 +64,7 @@ UI.prototype.clearFields = function() {
 }
 
 // Event Listener for add book
-document.getElementById('book-form').addEventListener('submit', function(e){
+document.getElementById('info-form').addEventListener('submit', function(e){
   e.preventDefault();
 
   // Get form values
@@ -73,8 +73,8 @@ document.getElementById('book-form').addEventListener('submit', function(e){
         status = document.getElementById('status').value,
         location = document.getElementById('location').value
 
-  // Instantiate book    
-  const book = new Book(name, title, status, location);
+  // Instantiate info    
+  const Info = new Info(name, title, status, location);
 
   // Instantiate UI
   const ui = new UI();
@@ -84,27 +84,29 @@ document.getElementById('book-form').addEventListener('submit', function(e){
     // Eroor alert
     ui.showAlert('Please fill in all fields', 'error');
   } else {
-    // Add book to list
-    ui.addBookToList(book);
+    // Add info to list
+    ui.addInfoToList(info);
     // Show alert
-    ui.showAlert('Book Added!', 'success');
+    ui.showAlert('Employee Added!', 'success');
     // Clear fields
     ui.clearFields();
   }
 });
 
 // Even Listener for delete
-document.getElementById('book-list').addEventListener('click', function(e){
+document.getElementById('info-list').addEventListener('click', function(e){
   e.preventDefault();
 
   // Instantiate UI
   const ui = new UI();
 
-  // Delete book
-  ui.deleteBook(e.target);
+  // Delete info
+  ui.deleteInfo(e.target);
 
   // Show msg
-  ui.showAlert('Book Removed!', 'error');
+  ui.showAlert('Employee Removed!', 'error');
 
-  console.log(123);
+  //console.log(123);
 })
+
+document.querySelector("#info-list > tr > td:nth-child(1)")
